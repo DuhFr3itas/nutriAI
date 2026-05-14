@@ -96,7 +96,11 @@ export default function ResultadoNutricionalPage() {
     if (patientData.height === 0) return null
 
     // 1. Cálculo de IMC
+<<<<<<< HEAD
     const heightInMeters = patientData.height > 3 ? patientData.height / 100 : patientData.height
+=======
+    const heightInMeters = patientData.height / 100
+>>>>>>> 41cd1c6abc1bbc936acca7085f16d7be5ebed42f
     const imc = patientData.weight / (heightInMeters * heightInMeters)
     
     let imcClassification = "Normal"
@@ -131,7 +135,11 @@ export default function ResultadoNutricionalPage() {
     const fatGrams = Math.round((dailyCalories * (macrosPct.fat / 100)) / 9)
 
     return {
+<<<<<<< HEAD
       imc: imc.toFixed(2),
+=======
+      imc: imc.toFixed(1),
+>>>>>>> 41cd1c6abc1bbc936acca7085f16d7be5ebed42f
       imcClassification,
       dailyCalories,
       proteinGrams,

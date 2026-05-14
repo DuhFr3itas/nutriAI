@@ -120,7 +120,11 @@ export default function RelatoriosPage() {
 
     patients.forEach(p => {
       if (p.weight && p.height) {
+<<<<<<< HEAD
         const heightM = p.height > 3 ? p.height / 100 : p.height
+=======
+        const heightM = p.height / 100
+>>>>>>> 41cd1c6abc1bbc936acca7085f16d7be5ebed42f
         const imc = p.weight / (heightM * heightM)
         totalImc += imc
         validImcCount++
@@ -145,7 +149,11 @@ export default function RelatoriosPage() {
 
     return {
       total: patients.length,
+<<<<<<< HEAD
       imcMedio: validImcCount > 0 ? (totalImc / validImcCount).toFixed(2) : "0.00",
+=======
+      imcMedio: validImcCount > 0 ? (totalImc / validImcCount).toFixed(1) : "0.0",
+>>>>>>> 41cd1c6abc1bbc936acca7085f16d7be5ebed42f
       objectivesData,
       imcDistributionData
     }

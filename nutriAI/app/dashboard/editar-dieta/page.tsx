@@ -3,7 +3,10 @@
 import { useState } from "react"
 import { motion } from "framer-motion"
 import Link from "next/link"
+<<<<<<< HEAD
 import { useSearchParams } from "next/navigation"
+=======
+>>>>>>> 41cd1c6abc1bbc936acca7085f16d7be5ebed42f
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -157,9 +160,12 @@ const foodSuggestions = [
 ]
 
 export default function EditarDietaPage() {
+<<<<<<< HEAD
   const searchParams = useSearchParams()
   const patientId = searchParams.get("paciente")
   const patientQuery = patientId ? `?paciente=${patientId}` : ""
+=======
+>>>>>>> 41cd1c6abc1bbc936acca7085f16d7be5ebed42f
   const [meals, setMeals] = useState<Meal[]>(initialMeals)
   const [selectedMeal, setSelectedMeal] = useState<string>("")
   const [isAddDialogOpen, setIsAddDialogOpen] = useState(false)
@@ -412,13 +418,21 @@ export default function EditarDietaPage() {
 
       {/* Action Buttons */}
       <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-3">
+<<<<<<< HEAD
         <Link href={`/dashboard/dieta-gerada${patientQuery}`} className="flex-1">
+=======
+        <Link href="/dashboard/dieta-gerada" className="flex-1">
+>>>>>>> 41cd1c6abc1bbc936acca7085f16d7be5ebed42f
           <Button variant="outline" size="lg" className="w-full h-12 gap-2">
             <Save className="w-4 h-4" />
             Salvar Alterações
           </Button>
         </Link>
+<<<<<<< HEAD
         <Link href={`/dashboard/gerar-pdf${patientQuery}`} className="flex-1">
+=======
+        <Link href="/dashboard/gerar-pdf" className="flex-1">
+>>>>>>> 41cd1c6abc1bbc936acca7085f16d7be5ebed42f
           <Button size="lg" className="w-full h-12 gap-2">
             <Check className="w-4 h-4" />
             Aprovar e Gerar PDF

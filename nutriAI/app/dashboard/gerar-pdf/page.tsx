@@ -34,18 +34,25 @@ function GerarPDFContent() {
   const [isGenerating, setIsGenerating] = useState(false)
   const [pdfGenerated, setPdfGenerated] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
+<<<<<<< HEAD
   const [loadError, setLoadError] = useState("")
+=======
+>>>>>>> 41cd1c6abc1bbc936acca7085f16d7be5ebed42f
 
   const [patientData, setPatientData] = useState<any>(null)
   const [meals, setMeals] = useState<any[]>([])
 
   useEffect(() => {
     async function loadData() {
+<<<<<<< HEAD
       if (!patientId) {
         setLoadError("Paciente não informado. Volte para a dieta gerada e clique em Aprovar e Gerar PDF.")
         setIsLoading(false)
         return
       }
+=======
+      if (!patientId) return
+>>>>>>> 41cd1c6abc1bbc936acca7085f16d7be5ebed42f
       const token = localStorage.getItem("access_token")
 
       try {
@@ -59,6 +66,7 @@ function GerarPDFContent() {
           headers: { "Authorization": `Bearer ${token}` }
         })
 
+<<<<<<< HEAD
         if (!pRes.ok) {
           setLoadError("Não foi possível carregar os dados do paciente.")
           return
@@ -81,6 +89,21 @@ function GerarPDFContent() {
           setMeals(latestDiet.meals || [])
         } else {
           setLoadError("Nenhuma dieta foi encontrada para este paciente.")
+=======
+        if (pRes.ok) {
+          const p = await pRes.json()
+          const imc = p.height > 0 ? (p.weight / ((p.height/100) ** 2)).toFixed(1) : "0.0"
+          setPatientData({ ...p, imc })
+        }
+
+        if (dRes.ok) {
+          const diets = await dRes.json()
+          if (diets.length > 0) {
+            // Pegamos a dieta mais recente (última da lista)
+            const latestDiet = diets[diets.length - 1]
+            setMeals(latestDiet.meals || [])
+          }
+>>>>>>> 41cd1c6abc1bbc936acca7085f16d7be5ebed42f
         }
       } catch (error) {
         console.error("Erro ao carregar dados do PDF:", error)
@@ -93,6 +116,7 @@ function GerarPDFContent() {
 
   const totalCalories = meals.reduce((acc, m) => acc + (m.total_calories || 0), 0)
 
+<<<<<<< HEAD
   const handlePrint = () => {
     setPdfGenerated(true)
     setTimeout(() => window.print(), 100)
@@ -107,6 +131,18 @@ function GerarPDFContent() {
 
   if (isLoading) return <div className="flex h-screen items-center justify-center gap-2"><Loader2 className="animate-spin" /> Preparando documento...</div>
   if (loadError) return <div className="p-10 text-center space-y-4"><p>{loadError}</p><Button onClick={() => router.back()}>Voltar</Button></div>
+=======
+  const handleSaveAndDownload = async () => {
+    setIsGenerating(true)
+    // Simulação: Aqui chamaremos a função que gera o Blob do PDF e envia pro Backend
+    await new Promise(r => setTimeout(r, 1500))
+    setPdfGenerated(true)
+    setIsGenerating(false)
+    alert("PDF gerado e salvo no histórico do paciente!")
+  }
+
+  if (isLoading) return <div className="flex h-screen items-center justify-center gap-2"><Loader2 className="animate-spin" /> Preparando documento...</div>
+>>>>>>> 41cd1c6abc1bbc936acca7085f16d7be5ebed42f
   if (!patientData) return <div className="p-10 text-center">Erro: Selecione um paciente válido.</div>
 
   return (
@@ -146,7 +182,11 @@ function GerarPDFContent() {
             </div>
             <div><p className="text-[10px] text-slate-400 uppercase">Nome</p><p className="font-bold text-sm">{patientData.name}</p></div>
             <div><p className="text-[10px] text-slate-400 uppercase">IMC</p><p className="font-bold text-sm">{patientData.imc} kg/m²</p></div>
+<<<<<<< HEAD
             <div><p className="text-[10px] text-slate-400 uppercase">Peso Atual</p><p className="font-bold text-sm">{Number(patientData.weight).toFixed(2)} kg</p></div>
+=======
+            <div><p className="text-[10px] text-slate-400 uppercase">Peso Atual</p><p className="font-bold text-sm">{patientData.weight}kg</p></div>
+>>>>>>> 41cd1c6abc1bbc936acca7085f16d7be5ebed42f
             <div><p className="text-[10px] text-slate-400 uppercase">Meta</p><Badge className="bg-green-100 text-green-700 hover:bg-green-100 border-none">{patientData.goal}</Badge></div>
           </div>
 
@@ -198,7 +238,11 @@ function GerarPDFContent() {
             </div>
             <div className="text-right text-xs text-green-100">
               <p>Plano calculado via NutriAI</p>
+<<<<<<< HEAD
               <p>Baseado na base nutricional cadastrada</p>
+=======
+              <p>Baseado em diretrizes nutricionais 2026</p>
+>>>>>>> 41cd1c6abc1bbc936acca7085f16d7be5ebed42f
             </div>
           </div>
         </div>
@@ -213,6 +257,7 @@ function GerarPDFContent() {
           </Button>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+<<<<<<< HEAD
             <Button size="lg" className="h-14 gap-2 bg-blue-600 hover:bg-blue-700" onClick={handlePrint}>
               <Download className="w-5 h-5" /> Baixar PDF
             </Button>
@@ -220,6 +265,15 @@ function GerarPDFContent() {
               <Mail className="w-5 h-5" /> Enviar por E-mail
             </Button>
             <Button size="lg" variant="outline" className="h-14 gap-2 border-blue-200" onClick={handlePrint}>
+=======
+            <Button size="lg" className="h-14 gap-2 bg-blue-600 hover:bg-blue-700">
+              <Download className="w-5 h-5" /> Baixar PDF
+            </Button>
+            <Button size="lg" variant="outline" className="h-14 gap-2 border-blue-200">
+              <Mail className="w-5 h-5" /> Enviar por E-mail
+            </Button>
+            <Button size="lg" variant="outline" className="h-14 gap-2 border-blue-200">
+>>>>>>> 41cd1c6abc1bbc936acca7085f16d7be5ebed42f
               <Printer className="w-5 h-5" /> Imprimir
             </Button>
           </div>

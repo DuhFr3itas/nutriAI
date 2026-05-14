@@ -9,9 +9,13 @@ from sqlalchemy.orm import Session
 from app.database.connection import get_db
 from app.models.user import User
 
+<<<<<<< HEAD
 import os
 
 SECRET_KEY = os.getenv("SECRET_KEY", "f8a9c1e4b7d2f6a9c3e8b1d4f7a2c9e6b3d1f8a4c7e9b2d6f1a3c5e7b9d2f4")
+=======
+SECRET_KEY = "f8a9c1e4b7d2f6a9c3e8b1d4f7a2c9e6b3d1f8a4c7e9b2d6f1a3c5e7b9d2f4"
+>>>>>>> 41cd1c6abc1bbc936acca7085f16d7be5ebed42f
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 60
 

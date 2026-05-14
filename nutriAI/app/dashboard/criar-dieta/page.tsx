@@ -80,6 +80,7 @@ function DietForm() {
       return
     }
 
+<<<<<<< HEAD
     if (!activityLevel) {
       alert("Por favor, selecione o nível de atividade do paciente.")
       return
@@ -125,6 +126,17 @@ function DietForm() {
     } finally {
       setIsGenerating(false)
     }
+=======
+    setIsGenerating(true)
+    
+    // COMO A IA AINDA NÃO ESTÁ LIGADA, VAMOS SIMULAR UM CARREGAMENTO
+    // E REDIRECIONAR PARA A TELA DA DIETA GERADA APÓS 2 SEGUNDOS
+    setTimeout(() => {
+      // No futuro, aqui enviaremos os dados de restrição para a IA no backend
+      setIsGenerating(false)
+      router.push("/dashboard/dieta-gerada")
+    }, 2000)
+>>>>>>> 41cd1c6abc1bbc936acca7085f16d7be5ebed42f
   }
 
   return (

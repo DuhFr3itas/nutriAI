@@ -18,7 +18,10 @@ export default function DashboardPage() {
     activePatients: 0
   })
   const [isLoading, setIsLoading] = useState(true)
+<<<<<<< HEAD
   const [userName, setUserName] = useState("Nutricionista")
+=======
+>>>>>>> 41cd1c6abc1bbc936acca7085f16d7be5ebed42f
 
   useEffect(() => {
     async function loadDashboardData() {
@@ -26,6 +29,7 @@ export default function DashboardPage() {
       if (!token) return
 
       try {
+<<<<<<< HEAD
         const uRes = await fetch("http://localhost:8000/users/me", {
           headers: { "Authorization": `Bearer ${token}` }
         }).catch(() => null)
@@ -35,6 +39,8 @@ export default function DashboardPage() {
           setUserName(user.name || "Nutricionista")
         }
 
+=======
+>>>>>>> 41cd1c6abc1bbc936acca7085f16d7be5ebed42f
         // 1. Buscar Pacientes
         const pRes = await fetch("http://localhost:8000/patients/", {
           headers: { "Authorization": `Bearer ${token}` }
@@ -95,7 +101,11 @@ export default function DashboardPage() {
       <div className="flex justify-between items-center">
         <div>
           <h1 className="text-3xl font-bold">Dashboard</h1>
+<<<<<<< HEAD
           <p className="text-muted-foreground">Bem-vindo de volta, {userName}!</p>
+=======
+          <p className="text-muted-foreground">Bem-vindo de volta, Dr. Matheus!</p>
+>>>>>>> 41cd1c6abc1bbc936acca7085f16d7be5ebed42f
         </div>
         <Link href="/dashboard/pacientes/novo">
           <Button className="bg-green-600 hover:bg-green-700">

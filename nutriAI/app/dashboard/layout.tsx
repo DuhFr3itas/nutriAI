@@ -27,15 +27,22 @@ import {
   LogOut,
   User,
   ChevronDown,
+<<<<<<< HEAD
   Folder,
   Database
+=======
+  Folder
+>>>>>>> 41cd1c6abc1bbc936acca7085f16d7be5ebed42f
 } from "lucide-react"
 
 const sidebarItems = [
   { icon: LayoutDashboard, label: "Dashboard", href: "/dashboard" },
   { icon: Users, label: "Pacientes", href: "/dashboard/pacientes" },
   { icon: Salad, label: "Criar Dieta", href: "/dashboard/criar-dieta" },
+<<<<<<< HEAD
   { icon: Database, label: "Base Nutricional", href: "/dashboard/base-nutricional" },
+=======
+>>>>>>> 41cd1c6abc1bbc936acca7085f16d7be5ebed42f
   { icon: BarChart3, label: "Relatórios", href: "/dashboard/relatorios" },
   { icon: Folder, label: "Arquivos", href: "/dashboard/arquivos" },
   { icon: Settings, label: "Perfil", href: "/dashboard/perfil" },
@@ -56,11 +63,16 @@ export default function DashboardLayout({
     async function loadUserName() {
       const token = localStorage.getItem("access_token")
       if (!token) {
+<<<<<<< HEAD
         router.push("/login")
+=======
+        setUserName("Usuário")
+>>>>>>> 41cd1c6abc1bbc936acca7085f16d7be5ebed42f
         return
       }
 
       try {
+<<<<<<< HEAD
         const response = await fetch("http://localhost:8000/users/me", {
           headers: { "Authorization": `Bearer ${token}` }
         })
@@ -70,6 +82,16 @@ export default function DashboardLayout({
         } else if (response.status === 401) {
           localStorage.removeItem("access_token")
           router.push("/login")
+=======
+        const response = await fetch("http://localhost:8000/users", {
+          headers: { "Authorization": `Bearer ${token}` }
+        })
+        if (response.ok) {
+          const users = await response.json()
+          if (users.length > 0) {
+            setUserName(users[users.length - 1].name)
+          }
+>>>>>>> 41cd1c6abc1bbc936acca7085f16d7be5ebed42f
         }
       } catch (error) {
         console.error("Erro ao carregar usuário:", error)

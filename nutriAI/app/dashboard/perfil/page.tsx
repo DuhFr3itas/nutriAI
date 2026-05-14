@@ -59,7 +59,11 @@ export default function PerfilPage() {
       }
 
       try {
+<<<<<<< HEAD
         const response = await fetch("http://localhost:8000/users/me", {
+=======
+        const response = await fetch("http://localhost:8000/users", {
+>>>>>>> 41cd1c6abc1bbc936acca7085f16d7be5ebed42f
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -68,6 +72,7 @@ export default function PerfilPage() {
         })
 
         if (response.ok) {
+<<<<<<< HEAD
           const currentUser = await response.json()
           setProfileData(prev => ({
             ...prev,
@@ -77,6 +82,22 @@ export default function PerfilPage() {
             crn: "",
             clinic: ""
           }))
+=======
+          const users = await response.json()
+          // Pega o último usuário criado (sua conta atual)
+          if (users.length > 0) {
+            const currentUser = users[users.length - 1]
+            setProfileData(prev => ({
+              ...prev,
+              name: currentUser.name,
+              email: currentUser.email,
+              // Campos abaixo ficam vazios pois ainda não existem no backend
+              phone: "",
+              crn: "",
+              clinic: ""
+            }))
+          }
+>>>>>>> 41cd1c6abc1bbc936acca7085f16d7be5ebed42f
         }
       } catch (error) {
         console.error("Erro ao carregar perfil:", error)

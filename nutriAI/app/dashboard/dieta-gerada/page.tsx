@@ -75,20 +75,26 @@ function DietaGeradaContent() {
           if (diets.length > 0) {
             // Pegamos a dieta mais recente
             const latestDiet = diets[diets.length - 1]
+<<<<<<< HEAD
             const latestAiDiet = localStorage.getItem("latest_ai_diet")
             const parsedAiDiet = latestAiDiet ? JSON.parse(latestAiDiet) : null
 
+=======
+>>>>>>> 41cd1c6abc1bbc936acca7085f16d7be5ebed42f
             const mappedMeals = latestDiet.meals.map((meal: any) => ({
               ...meal,
               icon: iconMap[meal.title] || Salad
             }))
             setMeals(mappedMeals)
+<<<<<<< HEAD
             setPatientData(prev => ({
               ...prev,
               dailyCalories: parsedAiDiet?.diet?.id === latestDiet.id
                 ? parsedAiDiet.target_calories
                 : latestDiet.total_calories
             }))
+=======
+>>>>>>> 41cd1c6abc1bbc936acca7085f16d7be5ebed42f
           }
         }
       } catch (error) {
@@ -103,7 +109,13 @@ function DietaGeradaContent() {
 
   const handleRegenerate = async () => {
     setIsRegenerating(true)
+<<<<<<< HEAD
     window.location.href = `/dashboard/criar-dieta?paciente=${patientId}`
+=======
+    // Chamada futura para a IA
+    await new Promise(resolve => setTimeout(resolve, 2000))
+    setIsRegenerating(false)
+>>>>>>> 41cd1c6abc1bbc936acca7085f16d7be5ebed42f
   }
 
   if (isLoading) {
